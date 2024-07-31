@@ -9,7 +9,7 @@ const Busseates = () => {
     const [selectedSeats, setSelectedSeats] = useState([]);
 
     const backpage1 = () => {
-        navigate('/home');
+        navigate('/myticket');
     };
 
     const BackToBus = () => {

@@ -10,7 +10,7 @@ function BusChoosing() {
     const { boardingLocation, dropingLocation } = location.state || { boardingLocation: "Location", dropingLocation: "Location" };
 
     const backpage = () => {
-        navigate('/');
+        navigate('/myticket');
     };
     const selectedBus = (bus) => {
         navigate('/busseates', { state: { bus, boardingLocation, dropingLocation } });
