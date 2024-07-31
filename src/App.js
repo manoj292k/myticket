@@ -10,11 +10,11 @@ import Busseates from './component/Busseats';
 function App() {
   return (
     <BrowserRouter>
-      <div className=''>
+      
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+          
+          <Route path="/myticket" element={<Home />} />
           <Route path="/bus-choosing" element={<BusChoosing />} />
           <Route path="/busseates" element={<Busseates />} />
           {/*
@@ -22,7 +22,7 @@ function App() {
           <Route path="*" element={<NoPage />} /> */}
         </Routes>
         <Footer />
-      </div>
+      
     </BrowserRouter>
   );
 }
