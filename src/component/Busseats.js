@@ -6,7 +6,7 @@ const Busseates = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { bus, boardingLocation, dropingLocation } = location.state || {};
-    const [selectedSeats, setSelectedSeats] = useState([]);
+    // const [selectedSeats, setSelectedSeats] = useState([]);
 
     const backpage1 = () => {
         navigate('/myticket');
@@ -16,15 +16,15 @@ const Busseates = () => {
         navigate('/bus-choosing');
     };
 
-    const handleSeatSelection = (seat) => {
-        if (selectedSeats.includes(seat)) {
-            setSelectedSeats(selectedSeats.filter(s => s !== seat));
-        } else {
-            setSelectedSeats([...selectedSeats, seat]);
-        }
-    };
+    // const handleSeatSelection = (seat) => {
+    //     if (selectedSeats.includes(seat)) {
+    //         setSelectedSeats(selectedSeats.filter(s => s !== seat));
+    //     } else {
+    //         setSelectedSeats([...selectedSeats, seat]);
+    //     }
+    // };
 
-    const isSeatSelected = (seat) => selectedSeats.includes(seat);
+    // const isSeatSelected = (seat) => selectedSeats.includes(seat);
 
     return (
         <>
