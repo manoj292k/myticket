@@ -1,21 +1,26 @@
+import React from 'react';
+
 function Header() {
     return (
         <>
-            <div className="container max-w-full bg-rose-500 align-middle header">
-                <div className="flex justify-between">
-                    <a className='p-2 text-white' href="#">mjtravelsinfo@mjt.com</a>
-                    <h1 className="text-5xl text-white p-2">MJ Travels</h1>
-                    <a className='p-2  text-white' href="#">9998877665</a>
+            <div className="w-full bg-rose-500 hidden md:block">
+                <div className="flex flex-col md:flex-row justify-between items-center p-4 text-white">
+                    <a href="#" className="mb-2 md:mb-0 text-sm md:text-base">mjtravelsinfo@mjt.com</a>
+                    <h1 className="text-2xl md:text-4xl font-bold">MJ Travels</h1>
+                    <a href="#" className="mt-2 md:mt-0 text-sm md:text-base">9998877665</a>
                 </div>
             </div>
-            <div className="container max-w-full flex bg-white align-middle justify-center border-2 navbar">
-                <li className="list-none p-3"><a href="/myticket">Home</a></li>
-                <li className="list-none p-3"><a href="/">My Booking</a></li>
-                <li className="list-none p-3"><a href="/">Cancel & Refund</a></li>
-                <li className="list-none p-3"><a href="/">Help</a></li>
-                <li className="list-none p-3"><a href="/">Contact us</a></li>
+            <div className="w-full bg-white flex justify-center border-b border-gray-200 ">
+                <ul className="flex flex-wrap justify-center md:justify-start space-x-4 md:space-x-8 p-3 text-sm md:text-base">
+                    <li><a className="hover:text-rose-500 transition-colors duration-200" href="/myticket">Home</a></li>
+                    <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">My Booking</a></li>
+                    <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">Cancel & Refund</a></li>
+                    <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">Help</a></li>
+                    <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">Contact Us</a></li>
+                </ul>
             </div>
         </>
-    )
+    );
 }
+
 export default Header;

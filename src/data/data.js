@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const BusData = [
-    "Select-location",
+    
     "Chennai",
     "Coimbathore",
     "Erode",

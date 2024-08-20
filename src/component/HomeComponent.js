@@ -9,90 +9,132 @@ function Home() {
     const navigate = useNavigate();
 
     const searchBus = () => {
-        try {
-            if (!boardingLocation || !droppingLocation || !journeyDate) {
-                alert("Please fill in all the fields");
-                return;
-            }
-            navigate('/bus-choosing', { state: { boardingLocation, droppingLocation, journeyDate } });
-        } catch (error) {
-            console.error("Navigation failed", error);
-            alert("An error occurred. Please try again.");
+        if (!boardingLocation || !droppingLocation || !journeyDate) {
+            alert("Please fill in all the fields");
+            return;
         }
+        navigate('/bus-choosing', { state: { boardingLocation, droppingLocation, journeyDate } });
     };
 
     return (
-        <div className='w-full'>
-            <form className="homeBg flex-col justify-around">
-                <h1 className='text-6xl text-white text-center'>Tamilnadu's No. 1 Omni Bus</h1>
-                <div className='bg-slate-200 w-auto'>
-                    <label>Find your route</label>
-                    <label>Boarding location</label>
-                    <select onChange={(e) => setBoardingLocation(e.target.value)} required id='location1'>
-                        <option value="">Select a location</option>
-                        {BusData.map((location, index) => (
-                            <option key={index} value={location}>{location}</option>
-                        ))}
-                    </select>
-                    <label>Dropping location</label>
-                    <select required onChange={(e) => setDroppingLocation(e.target.value)}>
-                        <option value="">Select a location</option>
-                        {BusData.map((location, index) => (
-                            <option key={index} value={location}>{location}</option>
-                        ))}
-                    </select>
-                    <label>Date of Journey</label>
-                    <input type='date' required onChange={(e) => setJourneyDate(e.target.value)} id="dateOfJourney"/>
-                    <button type='button' onClick={searchBus}>Search</button>
-                </div>
-            </form>
-            <div className='w-full h-auto flex justify-around container2'>
-                <h1 className='text-center text-red-500 text-5xl'>Our Routes</h1>
-                <p className='text-gray-600 text-3xl p-3'>We provide bus facilities for various routes that includes more than 20 Corporate Cities</p>
+        <>
+            <div className="flex justify-center items-center min-h-screen bg-gray-100 homeBg">
+                <div className="bg-white bg-opacity-60 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6 w-full max-w-4xl">
+                    <div className="flex flex-col md:flex-row items-center w-full space-y-6 md:space-y-0 md:space-x-4">
+                        <div className="flex flex-col items-center w-full md:w-auto">
+                            <label className="block text-sm text-gray-600">From</label>
+                            <select
+                                onChange={(e) => setBoardingLocation(e.target.value)}
+                                className="text-lg font-medium text-gray-900 w-[80%] md:w-52 px-6 py-3 rounded-full border-[1px] bg-opacity-60"
+                            >
 
-                <div className='mapImg w-1/2'>
-                    {/* Your map image or content here */}
-                </div>
+                                {BusData.map((location, index) => (
+                                    <option key={index} value={location}>{location}</option>
+                                ))}
+                            </select>
+                        </div>
 
-                <div className='w-1/2'>
-                    <table className='will-change-auto align-middle'>
-                        <tbody>
-                            {BusData.map((location, index) => (
-                                <tr key={index} className='bg-red-500'>
-                                    <td className='w-24'>Chennai</td>
-                                    <td className='w-24'><box-icon name='left-arrow-alt'></box-icon><box-icon name='right-arrow-alt'></box-icon></td>
-                                    <td className='w-36'>{location}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                        <div className="flex items-center mx-4">
+                            <span className="text-gray-400">⇄</span>
+                        </div>
+
+                        <div className="flex flex-col items-center w-full md:w-auto">
+                            <label className="block text-sm text-gray-600">To</label>
+                            <select
+                                onChange={(e) => setDroppingLocation(e.target.value)}
+                                className="text-lg font-medium text-gray-900 w-[80%] md:w-52  px-6 py-3 rounded-full border-[1px] bg-opacity-60"
+                            >
+
+                                {BusData.map((location, index) => (
+                                    <option key={index} value={location}>{location}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center w-full md:w-auto">
+                        <label className="block text-sm text-gray-600">Date</label>
+                        <input
+                            type="date"
+                            onChange={(e) => setJourneyDate(e.target.value)}
+                            className="text-lg font-medium text-gray-900 w-full md:w-52  px-6 py-3 rounded-full border-[1px] bg-opacity-60"
+                        />
+                    </div>
+
+                    <button
+                        onClick={searchBus}
+                        className="w-full md:w-auto bg-rose-500 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-rose-600 transition duration-200"
+                    >
+                        SEARCH BUSES
+                    </button>
                 </div>
             </div>
+            <section>
+                <h1 className="text-4xl md:text-5xl text-red-500 font-bold text-center">Our Routes</h1>
+                <p className="text-xl md:text-2xl text-gray-600  text-center">We provide bus facilities for various routes that include more than 20 Corporate Cities.</p>
+                <div className="w-full h-[60vh] md:h-[80vh] flex flex-col items-center justify-center bg-gray-50 border-2">
+                    <div className='bg-indigo-200 flex flex-col h-auto'>
+                    </div>
+                    <div className="relative flex justify-center items-center">
+                        {/* Center - Chennai */}
+                        <div className="absolute flex items-center justify-center w-40 h-40 bg-red-500 text-white rounded-full text-center">
+                            <p className="text-lg font-bold">Chennai</p>
+                        </div>
 
-            <div className='w-full flex justify-around container3'>
-                <div className='w-1/2 p-10 align-middle'>
-                    <h1 className='text-5xl text-indigo-800 text-center p-7'>About us</h1>
-                    <p className='text-center'>
-                        MJ TRAVELS with its head office situated in Chennai, provides bus services between various locations across Tamilnadu. We are working to extend our services to various other states in near future. We are operating fully Premium AC Sleeper Buses. We also provide tour services for different states. This is available on a pre-booking basis. <br /><br />
-                        Highly secured and providing simpler and smarter way of bus booking with a wide range of facilities, right from choosing your pickup point to your preferred choice of seat based on your convenience.
+                        {/* Other Locations - Orbiting Chennai */}
+                        {BusData.map((location, index) => (
+                            <div
+                                key={index}
+                                className="absolute w-24 h-24 bg-red-500 text-white rounded-full flex items-center justify-center"
+                                style={{
+                                    transform: `rotate(${index * (360 / BusData.length)}deg) translate(150px) rotate(-${index * (360 / BusData.length)}deg)`
+                                }}
+                            >
+                                <p className="text-sm font-medium">{location}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            </section>
+            <div className='w-full flex flex-col items-center py-16 bg-white'>
+                <div className='w-full max-w-4xl text-center'>
+                    <h1 className='text-4xl md:text-5xl text-indigo-800 font-bold mb-8'>About Us</h1>
+                    <p className='text-lg md:text-xl text-gray-700 leading-relaxed p-3'>
+                        MJ TRAVELS, headquartered in Chennai, provides bus services across Tamilnadu. We are expanding our services to other states soon, with premium AC Sleeper Buses. Our tour services are also available on a pre-booking basis. Our buses offer a safe, smart, and convenient way to travel, with features like live GPS tracking and hygienic coaches.
                     </p>
                 </div>
-                <div className='cartoonImg'> {/* Your cartoon image or content here */} </div>
             </div>
 
-            <div className='w-full bg-red-500'>
-                <h1 className='text-6xl text-fuchsia-50 text-center p-10'>Core Features</h1>
-                <h3 className='text-3xl text-black text-center p-5'>Find Travel Perfection</h3>
-                <p className='text-2xl text-fuchsia-50 text-center'>We offer the stylish features to make our passenger's trip more affable.</p>
-                <div className='w-full h-auto flex justify-around p-11 features'>
-                    <div className='w-36 h-40 p-10 bg-slate-50 text-center rounded-xl'><div><box-icon type='solid' name='coupon'></box-icon></div> Online Booking</div>
-                    <div className='w-36 h-40 p-10 bg-slate-50 text-center rounded-xl'><div><box-icon name='credit-card'></box-icon></div> Accept All Cards</div>
-                    <div className='w-36 h-40 p-10 bg-slate-50 text-center rounded-xl'><div><box-icon name='phone-call'></box-icon></div> Customer Care Service</div>
-                    <div className='w-36 h-40 p-10 bg-slate-50 text-center rounded-xl'><div><box-icon name='location-plus'></box-icon></div> Live Tracking GPS</div>
-                    <div className='w-36 h-40 p-10 bg-slate-50 text-center rounded-xl'><div><box-icon name='health'></box-icon></div> Hygienic Coach</div>
+            <div className='w-full bg-red-500 py-16'>
+                <div className='w-full max-w-6xl mx-auto'>
+                    <h1 className='text-5xl text-white text-center font-bold mb-10'>Core Features</h1>
+                    <div className='w-full flex flex-wrap justify-around items-center'>
+                        <div className='w-36 h-40 p-6 bg-white text-center rounded-lg shadow-lg mb-6'>
+                            <div><box-icon type='solid' name='coupon' className='text-red-500'></box-icon></div>
+                            <span className='block mt-4 text-lg font-semibold'>Online Booking</span>
+                        </div>
+                        <div className='w-36 h-40 p-6 bg-white text-center rounded-lg shadow-lg mb-6'>
+                            <div><box-icon name='credit-card' className='text-red-500'></box-icon></div>
+                            <span className='block mt-4 text-lg font-semibold'>Accept All Cards</span>
+                        </div>
+                        <div className='w-36 h-40 p-6 bg-white text-center rounded-lg shadow-lg mb-6'>
+                            <div><box-icon name='phone-call' className='text-red-500'></box-icon></div>
+                            <span className='block mt-4 text-lg font-semibold'>Customer Care Service</span>
+                        </div>
+                        <div className='w-36 h-40 p-6 bg-white text-center rounded-lg shadow-lg mb-6'>
+                            <div><box-icon name='location-plus' className='text-red-500'></box-icon></div>
+                            <span className='block mt-4 text-lg font-semibold'>Live Tracking GPS</span>
+                        </div>
+                        <div className='w-36 h-40 p-6 bg-white text-center rounded-lg shadow-lg mb-6'>
+                            <div><box-icon name='health' className='text-red-500'></box-icon></div>
+                            <span className='block mt-4 text-lg font-semibold'>Hygienic Coach</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        </>
     );
 }
 
