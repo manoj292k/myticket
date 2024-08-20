@@ -12,7 +12,7 @@ function Header() {
             </div>
             <div className="w-full bg-white flex justify-center border-b border-gray-200 ">
                 <ul className="flex flex-wrap justify-center md:justify-start space-x-4 md:space-x-8 p-3 text-sm md:text-base">
-                    <li><a className="hover:text-rose-500 transition-colors duration-200" href="/myticket">Home</a></li>
+                    <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">Home</a></li>
                     <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">My Booking</a></li>
                     <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">Cancel & Refund</a></li>
                     <li><a className="hover:text-rose-500 transition-colors duration-200" href="/">Help</a></li>
