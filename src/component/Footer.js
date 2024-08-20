@@ -12,10 +12,10 @@ function Footer() {
                     <h3 className='text-xl font-semibold mb-4'>Quick Links</h3>
                     <ul>
                         <li className='mb-2'><a href='/myticket' className='hover:text-red-400'>Home</a></li>
-                        <li className='mb-2'><a href='/' className='hover:text-red-400'>My Booking</a></li>
-                        <li className='mb-2'><a href='/' className='hover:text-red-400'>Cancel & Refund</a></li>
-                        <li className='mb-2'><a href='/' className='hover:text-red-400'>Help</a></li>
-                        <li className='mb-2'><a href='/' className='hover:text-red-400'>Contact Us</a></li>
+                        <li className='mb-2'><a href='#' className='hover:text-red-400'>My Booking</a></li>
+                        <li className='mb-2'><a href='#' className='hover:text-red-400'>Cancel & Refund</a></li>
+                        <li className='mb-2'><a href='#' className='hover:text-red-400'>Help</a></li>
+                        <li className='mb-2'><a href='#' className='hover:text-red-400'>Contact Us</a></li>
                     </ul>
                 </div>
                 <div className='w-full md:w-1/3'>
