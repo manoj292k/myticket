@@ -27,7 +27,7 @@ function Home() {
                                 onChange={(e) => setBoardingLocation(e.target.value)}
                                 className="text-lg font-medium text-gray-900 w-[80%] md:w-52 px-6 py-3 rounded-full border-[1px] bg-opacity-60"
                             >
-
+                                <option>Select</option>
                                 {BusData.map((location, index) => (
                                     <option key={index} value={location}>{location}</option>
                                 ))}
@@ -44,7 +44,7 @@ function Home() {
                                 onChange={(e) => setDroppingLocation(e.target.value)}
                                 className="text-lg font-medium text-gray-900 w-[80%] md:w-52  px-6 py-3 rounded-full border-[1px] bg-opacity-60"
                             >
-
+                                <option>Select</option>
                                 {BusData.map((location, index) => (
                                     <option key={index} value={location}>{location}</option>
                                 ))}
@@ -65,7 +65,7 @@ function Home() {
                         onClick={searchBus}
                         className="w-full md:w-auto bg-rose-500 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-rose-600 transition duration-200"
                     >
-                        SEARCH BUSES
+                         SEARCH BUSES
                     </button>
                 </div>
             </div>

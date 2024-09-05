@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Passenger = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { bus, selectedSeats, journeyDate, boardingLocation, droppingLocation } = location.state || {};
+    const { bus, selectedSeats, journeyDate, boardingLocation, droppingLocation, userEmail } = location.state || {};
 
     const [passengerDetails, setPassengerDetails] = useState(
         selectedSeats.map(() => ({ name: '', age: '', gender: 'Male' }))
@@ -31,10 +32,34 @@ const Passenger = () => {
         setShowModal(true);
     };
 
-    const confirmPayment = () => {
-        alert("Payment successful!");
-        setShowModal(false);
-        navigate('/myticket');
+    const confirmPayment = async () => {
+        try {
+            // Prepare booking data
+            const bookingData = {
+                busName: bus?.name,
+                journeyDate,
+                amount: totalPrice,
+                passengerDetails: passengerDetails.map((detail, index) => ({
+                    name: detail.name,
+                    age: detail.age,
+                    seatNumber: selectedSeats[index],
+                    gender: detail.gender,
+                })),
+                boardingLocation,
+                droppingLocation,
+                userEmail, // Using email as a foreign key
+            };
+
+            // Send POST request to save booking details
+            await axios.post('https://66d5ca01f5859a7042677b7b.mockapi.io/api/v1/bookingdata', bookingData);
+            
+            alert("Payment successful and booking details saved!");
+            setShowModal(false);
+            navigate('/myticket');
+        } catch (error) {
+            console.error('Error confirming payment:', error);
+            alert("There was an issue confirming your payment. Please try again.");
+        }
     };
 
     return (

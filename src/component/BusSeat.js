@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const BusSeats = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    
     const { bus, boardingLocation, droppingLocation, journeyDate } = location.state || {};
 
     const [selectedSeats, setSelectedSeats] = useState([]);
@@ -23,7 +24,7 @@ const BusSeats = () => {
             } else {
                 alert("Please select at least one seat.");
             }
-        } catch (error) {
+         } catch (error) {
             console.error("Booking failed", error);
             alert("An error occurred. Please try again.");
         }
